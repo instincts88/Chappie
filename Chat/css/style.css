@@ -1,0 +1,20 @@
+header{
+  text-align: center;
+}
+header .container-fluid{
+  margin-left: 0cm;
+
+}
+
+header .navbar-brand{
+  color: #fff;
+  
+}
+
+nav ul{
+  text-align: right;
+}
+
+footer {
+  position: absolute;
+}

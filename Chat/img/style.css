@@ -1,0 +1,159 @@
+body{
+    margin: 0;
+    padding:0;
+    background-position:center;
+    background:#85A2B6;
+    background-size: cover;
+
+}
+
+.navbar{
+    height:70px;
+}
+
+.loginbox{
+    background: rgba(0, 0, 0, 0.5);
+    height:"320px";
+    width:"320px";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    box-sizing: border-box;
+    padding:40px 40px;
+    border-radius: 20px;
+}
+
+.logo{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    position:absolute;
+    top:-50px;
+    left: calc(50% - 50px);
+
+}
+
+nav button{
+    color:#00C5FF;
+
+}
+
+#userFormArea{
+    display:none;
+}
+
+header{
+    width:100%;
+    background:#fff;
+    height:60px;
+}
+
+nav .menuagain{
+    float:right;
+    position:absolute;
+    right:8px;
+    margin:0;
+    top:16px;
+}
+
+a{
+    text-decoration: none;
+    color:#00C5FF;
+    text-transform: uppercase;
+    size:14px;
+}
+a:hover{
+    color:black;
+    text-decoration: none;
+}
+
+li{
+    list-style:none;
+    display:inline-block;
+    margin-left: 70px;
+    
+}
+
+.brand{
+    width:150px;
+    height:50px;
+    position:absolute;
+    margin:fixed;
+    top:9px;
+    left:25px;
+    float: left;
+}
+.headingcustom{
+    color:#fff;
+    padding:0 0 20px;
+    text-align: center;
+    height: 20px;
+    margin-top: 15px;
+    size: 45px;
+
+    
+}
+
+.loginbox input{
+    margin-top:0px;
+    width:100%
+}
+.loginbox input[type = "text"], input[type = "password"]{
+    background: transparent;
+    color: #fff;
+    border:none;
+    border-bottom: 1px solid #fff;
+    height:25px;
+    outline:none;
+}
+
+.tags{
+    padding:0;
+    font-weight:bold;
+    color:#fff;
+    size: 40px;
+    margin-top:40px
+}
+
+.loginbox input[type = "submit"]{
+    outline:none;
+    background-color: #00C5FF;
+    border:none;
+    height:40px;
+    color: #fff;
+    font-size:18px;
+    border-radius:20px;
+    margin-top:20px;
+
+}
+.loginbox input[type="submit"]:hover
+{
+    cursor: pointer;
+    background:white;
+    color:#00C5FF;
+
+}
+
+.loginbox a{
+    text-decoration:none;
+    font-size:12px;
+    line-height:20px;
+    color:darkgray;
+}
+
+.loginbox a:hover{
+    color:red;
+}
+
+
+section .sidebar{
+    background: #fff;
+    width: 100%;
+
+}
+section .maincontent{
+    background: yellow;
+    width:100%;
+
+}

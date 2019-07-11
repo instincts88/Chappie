@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="style.css">-->
+    <title>Document</title>
+
+<style>
+#messageArea{
+    display:none;
+}
+
+.loginform {
+    background: rgba(113, 186, 228, 0.5);
+    height:"320px";
+    width:"320px";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    box-sizing: border-box;
+    padding:40px 40px;
+    border-radius: 20px;
+}
+
+.logo{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    position:absolute;
+    top:-50px;
+    left: calc(50% - 50px);
+}
+    .headingcustom{
+    color:#fff;
+    padding:0 0 20px;
+    text-align: center;
+    height: 20px;
+    margin-top: 15px;
+    size: 45px;
+}
+
+div .sidebar{
+    background: rgb(211, 17, 17);
+    width: 100%;
+
+}
+div .maincontent{
+    background: yellow;
+    width:100%;
+}
+
+html, body{
+    height:100%;
+}
+.full-height{
+   height:100%;
+}
+
+/*Sidebar Toggle CSS*/
+.sidebar1 {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar1 a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar1 a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar1 .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#trick {
+  transition: margin-left .5s;
+  padding: 0px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar1 {padding-top: 15px;}
+  .sidebar1 a {font-size: 18px;}
+}
+.poz{
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+#chatbox
+    {
+        overflow:   none;
+        position:   relative;
+        width:      100%;
+        height:     850px;
+    }
+  #chat
+    {
+        overflow:   auto;
+        position:   bottom;
+        bottom:     0;
+        max-height: 100%;
+        width:100%;
+        
+    }
+
+
+</style>
+</head>
+<body id="trick">
+        <div id = "userFormArea">
+            <form id = "userForm" class = "loginform">
+                <div class="form-group">
+                    <p class = "headingcustom"><img src = "img/logo-blue.png" class = "logo"></p>
+                  <label for="exampleInputUsername1" style = "color:#fff;">Username</label>
+                  <input id = "username" type="text" class="form-control" id="exampleInputUsername1"  placeholder="Enter Username" required>
+
+                </div>
+               <!-- <div class="form-group">
+                  <label for="exampleInputPassword1" style = "color:#fff;">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>-->
+                
+                <button type="submit" class="btn btn-primary">Log In</button>
+              </form>
+            </div>
+
+    <!--Login Area-->
+   <!-- <div id = "userFormArea" class = "loginbox">
+        
+            <img src = "img/logo-blue.png" class = "logo">
+            <h3 class = "headingcustom">Login Here</h3>
+            <form action="" id = "userForm">
+                    <p class = "tags">Username</p>
+                    <input type="text" name = "username" placeholder="Enter Username" required>
+                    <p class = "tags">Password</p>
+                    <input type="password" name = "password" placeholder="Password" required>
+                    <input  class = "btn btn-dark" type = "submit" value = "Log In" name = "submit">
+    
+            </form>
+        </div>-->
+        <!--Main content area-->
+<div id = "messageArea" >
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <span class="navbar-brand mb-0 h1">Chappie</span>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                     <div class="collapse navbar-collapse menuagain" id="navbarSupportedContent">
+                     <span class="menuagain">
+                        <ul class="navbar-nav mr-auto">
+                          <li class="nav-item active">
+                            <a class="nav-link" href="#">Telegram<span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Settings</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Notifications
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="#">Appointments</a>
+                              <a class="dropdown-item" href="#">Schedules</a>
+
+                          </li>
+
+                        </ul>
+                    </span>
+                      </div>
+                </nav>
+    
+           <!--
+            <div class = "container-fluid">
+                <div class = "row">
+                    <div class = "sidebar col-xs-2 col-md-2">
+                        asdasd
+                    </div>
+                    <div class ="maincontent col-xs-10 col-md-10">
+                        asdfs
+                    </div>
+                </div>
+
+            </div>-->
+            <div class="container-fluid">
+                    <div class="row">
+                      <nav class="col-md-2 bg-dark sidebar1" id = "mySidebar">
+                        <div  class="sidebar-sticky">
+                          <ul class="nav flex-column">
+                            <li id = "users" class="nav-item">
+                            
+                           
+                          </ul>
+                  
+                        </div>
+                      </nav>
+                    
+
+                   <!--   <div id="mySidebar" class="sidebar1">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                            <a href="#">About</a>
+                            <a href="#">Services</a>
+                            <a href="#">Clients</a>
+                            <a href="#">Contact</a>
+                          </div>
+                        -->
+                          
+                      <!--toggle sidebar script-->
+                      
+                      <script>
+                            function openNav() {
+                              document.getElementById("mySidebar").style.width = "200px";
+                              document.getElementById("trick").style.marginLeft = "200px";
+                              document.getElementById('show').style.visibility = 'hidden';
+                              document.getElementById('hide').style.visibility = 'visible';
+                            }
+                            
+                            function closeNav() {
+                              document.getElementById("mySidebar").style.width = "0";
+                              document.getElementById("trick").style.marginLeft= "0";
+                              document.getElementById('hide').style.visibility = 'hidden';
+                              document.getElementById('show').style.visibility = 'visible';
+                            }
+                            function hidehide(){
+                              document.getElementById('hide').style.visibility = 'hidden';
+                            }
+                            if (document.getElemnemtbyid("mysidebar").style.width = "0px"){
+                              hidehide();
+
+                            }
+                            </script>
+                               <!--toggle sidebar script ends-->
+                      
+                      <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-4">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                <button id="show" type="button" class="btn btn-sm btn-outline-secondary" onclick = "openNav()" >
+                                    Show Online Users
+                                </button>
+                                <button id="hide" type="button" class="btn btn-sm btn-outline-secondary" onclick="closeNav()">
+                                    Hide Online Users
+                                </button>
+                       
+                        
+                        </div>
+                  
+                        <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
+                  
+                        
+                        <div>
+                                <div id="chat" class = "container-fluid"></div>
+                                
+                                <form id = "send-message" class="input-group mb-3">
+                                    <input id = "message" type="text" class="form-control" placeholder="Type message here" aria-label="Username" aria-describedby="button-addon2" autocomplete="off" required>
+                                    <div class="input-group-append">
+                                      <button class="btn btn-outline-secondary">Send</button>
+                                    </div>
+                                  </form>
+                                </div>
+                                  <script src="/socket.io/socket.io.js"></script>
+                                  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+                                  <script>
+                                    jQuery(function($){
+                                      var socket  = io.connect();
+                                      var $messageForm = $('#send-message');
+                                      var $messageBox = $('#message');
+                                      var $chat = $('#chat');
+                                      var $userForm = $('#userForm');
+                                      var $userFormArea = $('#userFormArea');
+                                      var $messageArea = $('#messageArea');
+                                      var $users = $('#users');
+                                      var $username = $('#username');
+                        
+                        
+                                      $messageForm.submit(function(e){
+                                        e.preventDefault();
+                                        socket.emit('send message', $messageBox.val(), function(data){
+                                          $chat.append('<strong>'+ data.users + '</strong>: ' + data.msg);
+                                        });
+                                        $messageBox.val('');
+                                      });
+                        
+                                      socket.on('new message', function(data){
+                                        $chat.append('<strong>'+ data.users + '</strong>: ' + data.msg + '<br>');
+                                      });
+                                      socket.on('whisper', function(data){
+                                        $chat.append('<strong>'+ data.users + '</strong>: <i>' + data.msg + '</i><br>');
+                                      });
+                        
+                                      $userForm.submit(function(e){
+                                        e.preventDefault();
+                                        socket.emit('new user', $username.val(), function(data){
+                                          if (data){
+                                            $userFormArea.hide();
+                                            $messageArea.show();
+                                          }
+                                        });
+                                        $username.val('');
+                                      });
+                        
+                                      socket.on('get users', function(data){
+                                        var html = '';
+                                        for(i = 0; i < data.length; i++){
+                                          html += data[i] + '<br/>';
+                                        }
+                                        $users.html(html);
+                                      });
+                                    });
+                                
+                                </script>
+                                  
+                                    
+                        </div>
+                      </main>
+                    </div>
+                  </div>
+
+</div>
+
+
+
+
+<script>
+        $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

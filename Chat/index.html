@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+  <title>Chappie</title>
+
+
+
+<style>
+  #messageArea{
+    display:none;
+  }
+</style>
+</head>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+       .copy{ background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form .copy input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form .copy button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+   
+<body>
+    <div class = "container-fluid">
+      <div id = "userFormArea" class = "row">
+          <div class = "col-md-6">
+              <form id= "userForm">
+                  <div class = "form-group">
+                    <label>Enter Username</label>
+                    <input class = "form-control" id = "username" required = yes/><br/>
+                    <input type = "submit" class = "btn btn-primary" value= "Login">
+                  </div>
+              </form>
+          </div>
+      </div>
+    </div>
+
+
+   
+
+
+<div id = "messageArea">
+  <div  class="d-flex" id="wrapper">
+    
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Online Users </div>
+      <div id = users class="list-group">
+       <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>-->
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid" height = "98%">
+      
+    </div>
+    <div>
+      <ul id="chat"></ul>
+      <form id = "send-message" action="">
+        <input id="message" autocomplete="off" /><button>Send</button>
+      </form>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+            jQuery(function($){
+              var socket  = io.connect();
+              var $messageForm = $('#send-message');
+              var $messageBox = $('#message');
+              var $chat = $('#chat');
+              var $userForm = $('#userForm');
+              var $userFormArea = $('#userFormArea');
+              var $messageArea = $('#messageArea');
+              var $users = $('#users');
+              var $username = $('#username');
+
+
+              $messageForm.submit(function(e){
+                e.preventDefault();
+                socket.emit('send message', $messageBox.val(), function(data){
+                  $chat.append('<strong>'+ data.users + '</strong>: ' + data.msg);
+                });
+                $messageBox.val('');
+              });
+
+              socket.on('new message', function(data){
+                $chat.append('<strong>'+ data.users + '</strong>: ' + data.msg) + '<br>';
+              });
+              socket.on('whisper', function(data){
+                $chat.append('<strong>'+ data.users + '</strong>: <i>' + data.msg + '</i><br>');
+              });
+
+              $userForm.submit(function(e){
+                e.preventDefault();
+                socket.emit('new user', $username.val(), function(data){
+                  if (data){
+                    $userFormArea.hide();
+                    $messageArea.show();
+                  }
+                });
+                $username.val('');
+              });
+
+              socket.on('get users', function(data){
+                var html = '';
+                for(i = 0; i < data.length; i++){
+                  html += data[i] + '<br/>';
+                }
+                $users.html(html);
+              });
+            });
+        
+        </script>
+          
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+ 
+</div>
+  <!-- /#wrapper -->
+
+  
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>
