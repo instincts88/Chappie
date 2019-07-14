@@ -5,7 +5,7 @@ users = {};
 connections = [];
 
 app.get('/', function(req, res){
-   res.sendFile(__dirname + '/final.html');
+   res.sendFile(__dirname + '/index.html');
 });
 
 io.sockets.on('connection', function(socket){
